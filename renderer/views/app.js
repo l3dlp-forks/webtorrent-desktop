@@ -10,7 +10,8 @@ var TorrentList = require('./torrent-list')
 var Modals = {
   'open-torrent-address-modal': require('./open-torrent-address-modal'),
   'update-available-modal': require('./update-available-modal'),
-  'create-torrent-modal': require('./create-torrent-modal')
+  'create-torrent-modal': require('./create-torrent-modal'),
+  'unsupported-media-modal': require('./unsupported-media-modal')
 }
 
 function App (state, dispatch) {
