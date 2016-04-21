@@ -260,21 +260,26 @@ table {
   width: 100%;
 }
 
-.create-torrent-modal .torrent-attribute {
+.create-torrent-page {
+  padding: 10px 25px;
+  overflow: hidden;
+}
+
+.create-torrent-page .torrent-attribute {
   white-space: nowrap;
 }
 
-.create-torrent-modal .torrent-attribute>* {
+.create-torrent-page .torrent-attribute>* {
   display: inline-block;
 }
 
-.create-torrent-modal .torrent-attribute label {
+.create-torrent-page .torrent-attribute label {
   width: 60px;
   margin-right: 10px;
   vertical-align: top;
 }
 
-.create-torrent-modal .torrent-attribute div {
+.create-torrent-page .torrent-attribute div {
   font-family: Consolas, monospace;
   white-space: nowrap;
 }

@@ -1,4 +1,4 @@
-module.exports = UpdateAvailableModal
+module.exports = CreateTorrentPage
 
 var h = require('virtual-dom/h')
 var hyperx = require('hyperx')
@@ -8,8 +8,8 @@ var path = require('path')
 
 var {dispatch} = require('../lib/dispatcher')
 
-function UpdateAvailableModal (state) {
-  var info = state.modal
+function CreateTorrentPage (state) {
+  var info = state.location.current()
 
   // First, extract the base folder that the files are all in
   var files = info.files
@@ -35,10 +35,11 @@ function UpdateAvailableModal (state) {
   })
 
   return hx`
-    <div class='create-torrent-modal'>
-      <p><strong>Create New Torrent</strong></p>
+    <div class='create-torrent-page'>
+      <h2>Create New Torrent</strong></h2>
       <p class='torrent-attribute'>
         <label>Name:</label>
+
         <div class='torrent-attribute'>${defaultName}</div>
       </p>
       <p class='torrent-attribute'>
@@ -49,9 +50,9 @@ function UpdateAvailableModal (state) {
         <label>Files:</label>
         <div>${fileElems}</div>
       </p>
-      <p>
-        <button class='primary' onclick=${handleOK}>Create Torrent</button>
+      <p class="float-right">
         <button class='cancel' onclick=${handleCancel}>Cancel</button>
+        <button class='primary' onclick=${handleOK}>Create Torrent</button>
       </p>
     </div>
   `
@@ -66,11 +67,11 @@ function UpdateAvailableModal (state) {
       files: files
     }
     dispatch('createTorrent', options)
-    dispatch('exitModal')
+    dispatch('backToList')
   }
 
   function handleCancel () {
-    dispatch('exitModal')
+    dispatch('backToList')
   }
 }
 

@@ -523,12 +523,7 @@ function onOpen (files) {
 
   // everything else = seed these files
   var rest = files.filter(not(isTorrent)).filter(not(isSubtitle))
-  if (rest.length > 0) {
-    state.modal = {
-      id: 'create-torrent-modal',
-      files: rest
-    }
-  }
+  if (rest.length > 0) showCreateTorrent(rest)
 }
 
 function isTorrent (file) {
@@ -640,10 +635,11 @@ function startTorrentingSummary (torrentSummary) {
 // Shows the Create Torrent page with options to seed a given file or folder
 function showCreateTorrent (files) {
   if (Array.isArray(files)) {
-    state.modal = {
-      id: 'create-torrent-modal',
+    if (state.location.pending() || state.location.current().url !== 'home') return
+    state.location.go({
+      url: 'create-torrent',
       files: files
-    }
+    })
     return
   }
 
